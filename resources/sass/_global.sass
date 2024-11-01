@@ -1,0 +1,35 @@
+$primary: #336eff
+$primary-dark: #3c33ff
+
+* 
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body 
+    font-family: Arial, sans-serif
+
+.btn
+    padding: 12px 35px
+    border-radius: 12px
+    border: none
+    cursor: pointer
+    transition: all 0.3s ease
+    text-decoration: none
+
+.btn-primary
+    background-color: $primary 
+    color: #fff 
+    &:hover 
+        background: $primary-dark
+
+.btn-outlined
+    border: 1px solid $primary-dark
+    background: #fff 
+    color: $primary-dark 
+    &:hover 
+        background: $primary-dark
+        color:#fff
+
+.btn-block 
+    width: 100%

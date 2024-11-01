@@ -1,0 +1,73 @@
+// Variables for reusability
+$primary-color: #000000
+$hover-color: #f8f9fa
+$border-radius: 8px
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1)
+
+// Global Styles
+body
+    font-family: 'DM Sans', sans-serif
+    line-height: 1.6
+    margin: 0
+    padding: 0
+
+// Header Styles
+header
+    background-color: white
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
+
+    .logo
+        img
+            width: 100%
+
+    .menu
+        .nav
+            .nav-item
+                a
+                    color: $primary-color
+                    text-decoration: none
+                    padding: 10px
+
+                    &:hover
+                        background-color: $hover-color
+                        border-radius: $border-radius
+
+    .cart
+        a
+            display: flex
+            align-items: center
+            justify-content: center
+
+// Search Container Styles
+.search-container
+    display: flex
+
+    input.form-control
+        width: 100%
+
+// Banner Styles
+.banner
+    img
+        width: 100%
+        height: auto
+
+// Products Section Styles
+.products
+    text-align: center
+
+    h2
+        margin-bottom: 20px
+
+    .row
+        .col
+            img
+                border-radius: $border-radius
+                box-shadow: $box-shadow
+
+// Carousel Styles
+.carousel
+    .carousel-inner
+        .carousel-item
+            img
+                width: 100%
+                height: auto
