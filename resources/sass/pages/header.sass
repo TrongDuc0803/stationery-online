@@ -1,31 +1,74 @@
 header
-    padding: 10px 0
+  padding: 10px 0
 
-.logo img
-    width: 80px
-    margin-right: 10px
+  .logo
+    img
+      width: 200px
+      margin-right: 10px
 
-.search-container
+  .search-container
     max-width: 600px
+    flex-grow: 1
     position: relative
 
     input[type="text"]
-        width: 100%
-        padding: 8px 15px
-        border: 1px solid #ddd
-        border-radius: 20px
-        outline: none
+      width: 100%
+      padding: 8px 15px
+      border: 1px solid #ddd
+      border-radius: 20px
+      outline: none
 
     .search-btn
-        background: none
-        border: none
-        position: absolute
-        right: 10px
-        top: 50%
-        transform: translateY(-50%)
-        cursor: pointer
-        padding: 0
+      background: none
+      border: none
+      position: absolute
+      right: 10px
+      top: 50%
+      transform: translateY(-50%)
+      cursor: pointer
+      padding: 0
 
-.icons a
-    margin-left: 10px
-    color: black
+  .icons
+    a
+      margin-left: 10px
+      color: black
+      display: flex
+      align-items: center
+
+  @media (max-width: 768px)
+    .container-fluid
+      flex-wrap: wrap
+
+    .logo
+      flex-basis: 100%
+      text-align: center
+      margin-bottom: 10px
+
+    .menu
+      flex-basis: 100%
+      text-align: center
+
+      ul
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        padding: 0
+        margin: 0
+        list-style: none
+
+        li
+          margin: 0 5px
+
+    .search-container
+      flex-basis: 100%
+      margin-bottom: 10px
+
+    .icons
+      flex-basis: 100%
+      justify-content: center
+
+  @media (max-width: 480px)
+    .menu ul li
+      margin: 5px 0
+      width: 100%
+      text-align: center

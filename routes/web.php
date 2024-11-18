@@ -3,6 +3,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,10 @@ Route::post('/logout', [AuthController::class,'logout'])->name('logout')->middle
 
 Route::get('/category/{categoryName}', [ProductController::class, 'showProductsByCategory'])->name('category.products');
 Route::get('/category/{categoryName}/product/{productName}', [ProductController::class, 'show'])->name('product.show');
+
+//search 
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+
 
 
 
