@@ -39,11 +39,7 @@
           <li class="list-inline-item"><a href="#"><i class="bi bi-twitter"></i></a></li>
           <li class="list-inline-item"><a href="#"><i class="bi bi-linkedin"></i></a></li>
         </ul>
-        <div class="mt-3">
-          <select class="form-select form-select-sm">
-            <option>Vietnam (INR ₹)</option>
-          </select>
-        </div>
+       
       </div>
     </div>
     <div class="text-center mt-4">
