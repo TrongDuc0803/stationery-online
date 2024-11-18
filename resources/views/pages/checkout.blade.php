@@ -11,7 +11,7 @@
             <!-- Form Section -->
             <div class="col-lg-7">
                 <div class="checkout-form">
-                    <form action="" id="payment-form" method="post">
+                    <form action="{{route('checkout')}}" id="payment-form" method="post">
                         @csrf
                         <!-- Name -->
                         <div class="field mb-3">
@@ -31,14 +31,7 @@
                             @enderror
                         </div>
 
-                        <!-- Phone -->
-                        <div class="field mb-3">
-                            <label for="phone">Phone</label>
-                            <input type="number" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter your phone" value="{{ old('phone') ? old('phone') : auth()->user()->phone }}">
-                            @error('phone')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+
 
                         <!-- Address -->
                         <div class="field mb-3">
@@ -49,7 +42,23 @@
                             @enderror
                         </div>
 
+                        <!-- city -->
+                        <div class="field mb-3">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" class="form-control @error('city') is-invalid @enderror" placeholder="Enter your city" value="{{ old('city') ? old('city') : auth()->user()->city }}">
+                            @error('city')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
+                        <!-- Phone -->
+                        <div class="field mb-3">
+                            <label for="phone">Phone</label>
+                            <input type="number" id="phone" name="phone" class="form-control @error('phone') is-invalid @enderror" placeholder="Enter your phone" value="{{ old('phone') ? old('phone') : auth()->user()->phone }}">
+                            @error('phone')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <!-- Submit Button -->
                         <div class="d-grid">
                             <button type="submit" class="btn btn-warning">Pay Now</button>
@@ -66,10 +75,10 @@
                     <!-- Hiển thị sản phẩm trong giỏ hàng -->
                     @if(session('cart') && count(session('cart')) > 0)
                     @foreach(session('cart') as $item)
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <img src="{{ $item['product']['image'] }}" alt="{{ $item['product']['name'] }}" class="img-fluid rounded" style="width: 50px; height: 50px; object-fit: cover;">
+                    <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+                        <img src="{{ $item['product']['image'] }}" alt="{{ $item['product']['name'] }}" class="img-fluid border rounded " style="width: 90px; height: 90px; object-fit: cover;">
                         <div>
-                            <p class="mb-0"></p>
+                            <p class="mb-0">{{ $item['product']['title'] }}</p>
                             <h6 class="text-muted">Quantity: {{ $item['quantity'] }}</h6>
                         </div>
                         <p class="price mb-0">$ {{ $item['product']['price'] }}</p>
@@ -82,9 +91,9 @@
                     <hr>
 
                     <!-- Total -->
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mt-2">
                         <p class="total">Total</p>
-                        <p class="total">$ {{ App\Models\Cart::totalAmount($item) }}</p>
+                        <p class="total">$ {{ App\Models\Cart::totalAmount() }}</p>
                     </div>
                 </div>
             </div>

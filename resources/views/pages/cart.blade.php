@@ -17,18 +17,19 @@
 @endif
 
 <div class="container my-5">
-    <h2>Your Cart</h2>
     <div class="row">
-        <div class="col-md-8">
+        <!-- Phần sản phẩm (Products) -->
+        <div class="col-lg-8 col-md-7">
             @if(session()->has('cart') && count(session()->get('cart')) > 0)
+            <h2>Your Cart</h2>
             @foreach(session()->get('cart') as $key => $item)
             <div class="cart-item d-flex align-items-center justify-content-between mb-3 p-3 border rounded">
-                <img src="{{ $item['product']['image'] }}" alt="{{ $item['product']['title'] }}">
-                <div class=" ms-3 flex-grow-1">
+                <img src="{{ $item['product']['image'] }}" alt="{{ $item['product']['title'] }}" style="width: 100px; height: auto;">
+                <div class="ms-3 flex-grow-1">
                     <h5 class="mb-1">{{ $item['product']['title'] }}</h5>
-                    <span>$ {{$item['product']['price']}}</span>
-                    <div class=" d-flex align-items-center">
-                        <span>Quantity : {{$item['quantity']}}</span>
+                    <span>${{ $item['product']['price'] }}</span>
+                    <div class="d-flex align-items-center">
+                        <span>Quantity: {{ $item['quantity'] }}</span>
                     </div>
                     <form action="{{ route('removeFromCart', $key) }}" method="POST" style="display: inline;">
                         @csrf
@@ -43,15 +44,23 @@
                 <div class="text-end" style="min-width: 120px;">
                     <p class="fw-bold mb-1">${{ App\Models\Cart::unitPrice($item) }}</p>
                 </div>
-
             </div>
             @endforeach
             @else
-            <p>Your cart is empty</p>
+            <div class="empty-cart d-flex flex-column justify-content-center align-items-center">
+                <h2>Your Cart</h2>
+                <svg width="30" height="31" viewBox="0 0 21 19" fill="currentColor" aria-hidden="true" focusable="false" role="presentation" class="icon">
+                    <path d="M10 6.25V.5h1.5v5.75H21l-3.818 12H3.818L0 6.25h10Zm-7.949 1.5 2.864 9h11.17l2.864-9H2.05h.001Z"></path>
+                </svg>
+                <p class="text-muted mt-2">Your cart is empty</p>
+                <a href="{{ route('home') }}" class="btn btn-dark mt-3">Start Shopping</a>
+            </div>
             @endif
         </div>
 
-        <div class="col-md-4">
+        <!-- Phần Order Summary -->
+        @if(session()->has('cart') && count(session()->get('cart')) > 0)
+        <div class="col-lg-4 col-md-5">
             <div class="order-summary p-3 border rounded">
                 <h5>Order Summary</h5>
                 <div class="mb-3">
@@ -63,8 +72,11 @@
                 <form action="{{ route('checkout') }}">
                     <button class="btn btn-dark checkout-btn mt-3 w-100">Checkout</button>
                 </form>
+
+                @endif
             </div>
         </div>
     </div>
 </div>
+
 @endsection

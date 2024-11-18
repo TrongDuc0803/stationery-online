@@ -4,6 +4,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,12 +38,17 @@ Route::post('/login', [AuthController::class,'postLogin'])->name('login')->middl
 Route::post('/logout', [AuthController::class,'logout'])->name('logout')->middleware('auth');
 
 
-
 Route::get('/category/{categoryName}', [ProductController::class, 'showProductsByCategory'])->name('category.products');
 Route::get('/category/{categoryName}/product/{productName}', [ProductController::class, 'show'])->name('product.show');
 
 //search 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+
+//Checkout
+Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+
+
 
 
 
